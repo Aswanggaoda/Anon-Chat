@@ -386,7 +386,7 @@ module.exports = handle = async (
 ⏩ ${prf}skip - _${lang == 'id' ? 'mencari teman lain' : 'looking for another opponent'}_
 ❌ ${prf}stop - _${lang == 'id' ? 'berhenti sesi chatting' : 'quit the chat session'}_
 💌 ${prf}sendprofile - _${lang == 'id' ? 'mengirim kontak pribadi anda ke teman chat' : 'send your personal contacts to chat opponents'}_
-          `
+`
                 const button = {
                     buttonText: lang == 'id' ? 'Pilih salah satu perintah' : 'Select one command',
                     description: str,
@@ -407,6 +407,10 @@ module.exports = handle = async (
                             {
                                 title: prf + 'stop',
                                 rowId: "stop"
+                            },
+                            {
+                                title: prf + 'sendprofile',
+                                rowId: "sendprofile"
                             }
                         ]
                     }],
@@ -423,13 +427,13 @@ module.exports = handle = async (
             case 'SEARCH 🔎':
             case prf + 'start':
             case prf + 'search':
-            case prf + 'find':
+			case prf + 'find':
                 if (!isMatched(sender).status) {
                     const strMatch = lang == 'id' ? `\`\`\`Mohon tunggu sedang mencari teman chat\`\`\` 🔎` : `\`\`\`Please wait looking for chat friends\`\`\` 🔎\n\ntype: *${prf}stop* (to stop session)`
                     // balas(from, strMatch)
                     const buttonMessage = {
                         contentText: strMatch,
-                        footerText: 'Follow my IG @hanif_az.sq.61',
+                        footerText: 'Follow my IG @aswangga0',
                         buttons: [
                             {
                                 buttonId: prf + 'stop',
@@ -447,7 +451,7 @@ module.exports = handle = async (
                     .then(() => {
                         const buttonMessage = {
                             contentText: lang == 'id' ? `\`\`\`Berhasil menemukan teman\`\`\` ✅\n\nketik :\n*${prf}stop* ( untuk berhenti chat )\n*${prf}skip* ( untuk melewati chat ini )` : `Successfully found friends ✅\n\ntype:\n*${prf}stop* (to stop chatting)\n*${prf}skip* (to skip this chat)`,
-                            footerText: 'Follow my IG @hanif_az.sq.61',
+                            footerText: 'Follow my IG @aswangga0',
                             buttons: [{
                                     buttonId: prf + 'skip',
                                     buttonText: {
@@ -474,7 +478,7 @@ module.exports = handle = async (
                             // balas(from, lang == 'id' ? `\`\`\`Kamu sudah memulai sesi chat!\`\`\` ❌ mohon tunggu sampai matchmaking selesai, atau ketik *${prf}stop*` : `You have started the chat session! ❌ please wait until the matchmaking is finished, or type *${prf}stop*`)
                             const buttonMessage = {
                                 contentText: lang == 'id' ? `\`\`\`Kamu sudah memulai sesi chat!\`\`\` ❌ mohon tunggu sampai matchmaking selesai, atau ketik *${prf}stop*` : `You have started the chat session! ❌ please wait until the matchmaking is finished, or type *${prf}stop*`,
-                                footerText: 'Follow my IG @hanif_az.sq.61',
+                                footerText: 'Follow my IG @aswangga0',
                                 buttons: [{
                                     buttonId: prf + 'stop',
                                     buttonText: {
@@ -491,7 +495,7 @@ module.exports = handle = async (
                             // balasNp(from, lang == 'id' ? `\`\`\`Tidak dapat menemukan teman\`\`\` ❌ mohon search ulang!` : `Cannot find friends ❌ please search again!`)
                             const buttonMessage = {
                                 contentText: lang == 'id' ? `\`\`\`Tidak dapat menemukan teman\`\`\` ❌ mohon search ulang!` : `Cannot find friends ❌ please search again!`,
-                                footerText: 'Follow my IG @hanif_az.sq.61',
+                                footerText: 'Follow my IG @aswangga0',
                                 buttons: [{
                                     buttonId: prf + 'search',
                                     buttonText: {
@@ -507,7 +511,7 @@ module.exports = handle = async (
                 break
             case 'SKIP ⏩':
             case prf + 'skip':
-            case prf + 'next':
+			case prf + 'next':
                 stop(sender)
                     .then(async (data) => {
                         data.db.splice(data.index, 1)
@@ -524,7 +528,7 @@ module.exports = handle = async (
                                 // balasNp(from, lang == 'id' ? `\`\`\`Berhasil menemukan teman\`\`\` ✅\n\nketik :\n*${prf}stop* ( untuk berhenti chat )\n*${prf}skip* ( untuk melewati chat ini )` : `Successfully found friends ✅\n\ntype:\n*${prf}stop* (to stop chatting)\n*${prf}skip* (to skip this chat)`)
                                 const buttonMessage = {
                                     contentText: lang == 'id' ? `\`\`\`Berhasil menemukan teman\`\`\` ✅\n\nketik :\n*${prf}stop* ( untuk berhenti chat )\n*${prf}skip* ( untuk melewati chat ini )` : `Successfully found friends ✅\n\ntype:\n*${prf}stop* (to stop chatting)\n*${prf}skip* (to skip this chat)`,
-                                    footerText: 'Follow my IG @hanif_az.sq.61',
+                                    footerText: 'Follow my IG @aswangga0',
                                     buttons: [{
                                             buttonId: prf + 'skip',
                                             buttonText: {
@@ -551,7 +555,7 @@ module.exports = handle = async (
                                     // balas(from, lang == 'id' ? `\`\`\`Kamu sudah memulai sesi chat!\`\`\` ❌ mohon tunggu sampai matchmaking selesai, atau ketik *${prf}stop*` : `You have started the chat session! ❌ please wait until the matchmaking is finished, or type *${prf}stop*`)
                                     const buttonMessage = {
                                         contentText: lang == 'id' ? `\`\`\`Kamu sudah memulai sesi chat!\`\`\` ❌ mohon tunggu sampai matchmaking selesai, atau ketik *${prf}stop*` : `You have started the chat session! ❌ please wait until the matchmaking is finished, or type *${prf}stop*`,
-                                        footerText: 'Follow my IG @hanif_az.sq.61',
+                                        footerText: 'Follow my IG @aswangga0',
                                         buttons: [{
                                             buttonId: prf + 'stop',
                                             buttonText: {
@@ -568,7 +572,7 @@ module.exports = handle = async (
                                     // balasNp(from, lang == 'id' ? `\`\`\`Tidak dapat menemukan teman\`\`\` ❌ mohon search ulang!` : `Cannot find friends ❌ please search again!`)
                                     const buttonMessage = {
                                         contentText: lang == 'id' ? `\`\`\`Tidak dapat menemukan teman\`\`\` ❌ mohon search ulang!` : `Cannot find friends ❌ please search again!`,
-                                        footerText: 'Follow my IG @hanif_az.sq.61',
+                                        footerText: 'Follow my IG @aswangga0',
                                         buttons: [{
                                             buttonId: prf + 'search',
                                             buttonText: {
@@ -585,7 +589,7 @@ module.exports = handle = async (
                     .catch((error) => {
                         const buttonMessage = {
                             contentText: lang == 'id' ? `\`\`\`Tidak dapat berhenti chat karena kamu belum pernah masuk sesi chat\`\`\` ❌\n\nKetik : ${prf}search` : `\`\`\`Cannot stop chat because you have never entered a chat session\`\`\` ❌\n\nType: ${prf}search`,
-                            footerText: 'Follow my IG @hanif_az.sq.61',
+                            footerText: 'Follow my IG @aswangga0',
                             buttons: [{
                                 buttonId: prf + 'search',
                                 buttonText: {
@@ -611,7 +615,7 @@ module.exports = handle = async (
                         console.log(error);
                         const buttonMessage = {
                             contentText: lang == 'id' ? `\`\`\`Tidak dapat berhenti chat karena kamu belum pernah masuk sesi chat\`\`\` ❌\n\nKetik : ${prf}search` : `\`\`\`Cannot stop chat because you have never entered a chat session\`\`\` ❌\n\nType: ${prf}search`,
-                            footerText: 'Follow my IG @hanif_az.sq.61',
+                            footerText: 'Follow my IG @aswangga0',
                             buttons: [{
                                 buttonId: prf + 'search',
                                 buttonText: {
@@ -754,7 +758,7 @@ module.exports = handle = async (
                             // balas(from, lang == 'id' ? `Kamu yakin akan mengirim broadcast gambar dengan pesan *${myMessage}*? ketik *Y/N*` : `Are you sure you want to send broadcast image with the message *${myMessage}*? type *Y/N*`)
                             const buttonMessage = {
                                 contentText: lang == 'id' ? `Kamu yakin akan mengirim broadcast gambar dengan pesan *${myMessage}*? ketik *Y/N*` : `Are you sure you want to send broadcast image with the message *${myMessage}*? type *Y/N*`,
-                                footerText: 'Follow my IG @hanif_az.sq.61',
+                                footerText: 'Follow my IG @aswangga0',
                                 buttons: [{
                                     buttonId: 'Y',
                                     buttonText: {
@@ -783,7 +787,7 @@ module.exports = handle = async (
                             // balas(from, lang == 'id' ? `Kamu yakin akan mengirim broadcast dengan pesan *${myMessage}*? ketik *Y/N*` : `Are you sure you want to send broadcast with the message *${myMessage}*? type *Y/N*`)
                             const buttonMessage = {
                                 contentText: lang == 'id' ? `Kamu yakin akan mengirim broadcast dengan pesan *${myMessage}*? ketik *Y/N*` : `Are you sure you want to send broadcast with the message *${myMessage}*? type *Y/N*`,
-                                footerText: 'Follow my IG @hanif_az.sq.61',
+                                footerText: 'Follow my IG @aswangga0',
                                 buttons: [{
                                     buttonId: 'Y',
                                     buttonText: {
