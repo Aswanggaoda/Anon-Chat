@@ -447,6 +447,7 @@ module.exports = handle = async (
             case 'SEARCH 🔎':
             case prf + 'start':
             case prf + 'search':
+            case prf + 'find':
                 if (!isMatched(sender).status) {
                     const strMatch = lang == 'id' ? `\`\`\`Mohon tunggu sedang mencari teman chat\`\`\` 🔎` : `\`\`\`Please wait looking for chat friends\`\`\` 🔎\n\ntype: *${prf}stop* (to stop session)`
                     // balas(from, strMatch)
@@ -530,6 +531,7 @@ module.exports = handle = async (
                 break
             case 'SKIP ⏩':
             case prf + 'skip':
+            case prf + 'next':
                 stop(sender)
                     .then(async (data) => {
                         data.db.splice(data.index, 1)
