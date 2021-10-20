@@ -386,10 +386,6 @@ module.exports = handle = async (
 ⏩ ${prf}skip - _${lang == 'id' ? 'mencari teman lain' : 'looking for another opponent'}_
 ❌ ${prf}stop - _${lang == 'id' ? 'berhenti sesi chatting' : 'quit the chat session'}_
 💌 ${prf}sendprofile - _${lang == 'id' ? 'mengirim kontak pribadi anda ke teman chat' : 'send your personal contacts to chat opponents'}_
-
-———————————————————————————
-
-\`\`\`${lang == 'en' ? 'bahasa yang anda gunakan adalah bahasa inggris, ketik ' + prf + 'changelang untuk mengganti ke bahasa indonesia' : 'the language you use is Indonesian, type ' + prf + 'changelang to change to english'}\`\`\`
           `
                 const button = {
                     buttonText: lang == 'id' ? 'Pilih salah satu perintah' : 'Select one command',
@@ -411,26 +407,6 @@ module.exports = handle = async (
                             {
                                 title: prf + 'stop',
                                 rowId: "stop"
-                            },
-                            {
-                                title: prf + 'sendprofile',
-                                rowId: "sendprofile"
-                            },
-                            {
-                                title: prf + 'changelang',
-                                rowId: "changelang"
-                            },
-                            {
-                                title: prf + 'bug',
-                                rowId: "bug"
-                            },
-                            {
-                                title: prf + 'owner',
-                                rowId: "owner"
-                            },
-                            {
-                                title: prf + 'author',
-                                rowId: "author"
                             }
                         ]
                     }],
