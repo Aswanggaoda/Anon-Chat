@@ -57,7 +57,7 @@ module.exports = handleSocket = async (
           const cmd = body.split(/ +/)[0]
           async function mengetik(dari) {
                await conn.chatRead(dari)
-               await conn.updatePresence(dari, 'composing')
+               await conn.updatePresence(dari, 'recording')
           }
 
           async function balas(dari, textnya) {
@@ -74,7 +74,7 @@ module.exports = handleSocket = async (
                     )
                )
                     return console.error(`Not a valid url!`);
-               await conn.updatePresence(dari, 'composing')
+               await conn.updatePresence(dari, 'recording')
                const caption = text || "";
                request({
                     url: url,
@@ -85,7 +85,7 @@ module.exports = handleSocket = async (
                               // quoted: hurtz,
                               caption: caption,
                          });
-                         await conn.updatePresence(dari, 'paused')
+                         await conn.updatePresence(dari, 'recording')
                     }
                );
           }
